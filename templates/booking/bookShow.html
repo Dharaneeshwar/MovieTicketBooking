@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      id="theme"
+      href="{% static '/css/bootstrap.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Dharani Cinemas</title>
+  </head>
+  <body class="pb-5">
+    <nav
+      id="userNavbar"
+      class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a
+          class="navbar-brand"
+          href="../../"
+          style="font-family: 'Patua One', cursive"
+          >Dharani Cinemas</a
+        >
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <button
+            onclick="logout()"
+            id="logoutButton"
+            class="btn btn-outline-light my-2 my-sm-0"
+          >
+            <i class="fas fa-sign-out-alt pr-1"></i>Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="margin-top: 100px">
+      <b class="text-black" style="font-size: larger"
+        >Movie : <span class="text-primary">{{movie.movie_name}}</span></b
+      >
+      <h5 class="mt-2 text-muted" style="font-family: 'Patua One', cursive">
+        (Screen {{show.screen}})
+      </h5>
+      <div class="container row">
+        <div class="col-6">
+          <img
+            class="img-fluid mt-5"
+            src="../static/media/{{movie.image}}"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="col-6 pb-5">
+          <h4 class="mt-2">
+            <span style="font-size: 25px; font-weight: 500">TicketPrice:</span>
+            ₹{{movie.ticket_price}}
+          </h4>
+          <h5 class="mt-5">Description:</h5>
+          <p class="text-muted">{{movie.description}}</p>
+          <div class="form-group">
+            <h5>Available Seats</h5>
+            <div class="mt-3" id="selectSeats">
+            </div>
+        </div>
+        <h6 class="mt-4">Number of seats: <span id="noOfPerson">0</span> (person)</h6>
+        <h6 class="mt-3">Paying Amount: <span id="amount">₹0</h6>
+        <div class="d-flex justify-content-end">
+          <button id="allowBook" onclick="bookTickets()" class="btn btn-primary">Book Tickets</button>
+        </div>
+      </div>
+    </div>
+    <!-- full jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var ticketPrice = "{{movie.ticket_price}}"; 
+        function logout() {
+        window.location = "../../accounts/logout/";
+      }
+    </script>
+    <script src="/static/js/bookshow.js"></script>
+  </body>
+</html>

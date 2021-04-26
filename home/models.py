@@ -8,3 +8,15 @@ class Movie(models.Model):
     description = models.CharField(max_length=500,default="")
     def __str__(self):
         return self.movie_name
+
+class Show(models.Model):
+    SCREEN = (('A','A'),('B','B'),('C','C'),('D','D'))
+    TIMING = (('10AM','10AM'),('1PM','1PM'),('4PM','4PM'),('7PM','7PM'))
+    movie =  models.ForeignKey(Movie,on_delete=models.CASCADE)
+    screen = models.CharField(max_length=5,choices=SCREEN)
+    timing = models.CharField(max_length=5,choices=TIMING)
+    date = models.DateField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.screen
+    
