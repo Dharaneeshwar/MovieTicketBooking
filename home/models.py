@@ -19,4 +19,6 @@ class Show(models.Model):
 
     def __str__(self):
         return self.screen
-    
+
+    class Meta:
+        unique_together = ('screen', 'timing','date',)
