@@ -1,0 +1,12 @@
+$theme-colors: (
+  "primary":#b31e6f ,
+  "secondary":#ee5a5a,
+  "black" : #111,
+  "info" : #ffb174
+);
+
+.navlink .active{
+  color: white;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
