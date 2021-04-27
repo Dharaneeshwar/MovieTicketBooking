@@ -10,7 +10,7 @@ def home(request):
     user = request.user
     if user.is_anonymous:
         return redirect('accounts/login/')
-    shows = Show.objects.filter(date__range = [datetime.today(),datetime.today()+timedelta(2)]).order_by('date').order_by('timing');
+    shows = Show.objects.filter(date__range = [datetime.today(),datetime.today()+timedelta(2)]).order_by('date','timing');
     all_show_info = []
     for show in shows:
         movie = show.movie

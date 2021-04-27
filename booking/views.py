@@ -28,16 +28,22 @@ def getBookings(request,id):
 
 def bookSeats(request,id):
     show = Show.objects.get(pk = id)
+    bookingID = None
     if request.method == "POST":
-        noOfPerson = request.POST.get('noOfPerson',0)
-        totalPrice = request.POST.get('total',0)
-        bookedSeats = request.POST.getlist('seatsBooked[]')
-        newBooking = Booking(show = show,noOfPerson =noOfPerson,ticket_price = totalPrice,user = request.user.username)
-        newBooking.save()
-        for seat in bookedSeats:
-            tempseat = Seat(show = show,seat_no = seat,bookingId = newBooking)
-            tempseat.save() 
+        try:
+            noOfPerson = request.POST.get('noOfPerson',0)
+            totalPrice = request.POST.get('total',0)
+            bookedSeats = request.POST.getlist('seatsBooked[]')
+            newBooking = Booking(show = show,noOfPerson =noOfPerson,ticket_price = totalPrice,user = request.user.username)
+            newBooking.save()
+            bookingID = newBooking.id
+            for seat in bookedSeats:
+                tempseat = Seat(show = show,seat_no = seat,bookingId = newBooking)
+                tempseat.save()
+        except:
+            bookingToBeDeleted = Booking.objects.get(pk = bookingID)
+            bookingToBeDeleted.delete() 
+            return JsonResponse({'status':False})
     else:
-        print("Hey")
         return JsonResponse({'status':False})
     return JsonResponse({'status':True})

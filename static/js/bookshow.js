@@ -6,7 +6,7 @@ var selectSeats = document.getElementById("selectSeats");
 var seatsToBeBooked = [];
 // get booked seats
 $(document).ready(() => {
-var allowBook = document.getElementById("allowBook");
+  var allowBook = document.getElementById("allowBook");
   allowBook.style.display = "none";
   $.ajax({
     type: "GET",
@@ -20,23 +20,34 @@ var allowBook = document.getElementById("allowBook");
 });
 
 function renderSeats() {
-  for (num of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-    if (bookedSeats.indexOf(num) == -1) {
-      selectSeats.innerHTML += `<div class="form-check form-check-inline">
+
+  // available = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter((ele) => {
+  //   bookedSeats.indexOf(ele) == -1;
+  // }).length != 0; 
+
+  // BETTER lOGIC HERE  
+
+  if (bookedSeats.length < 10) {
+    for (num of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+      if (bookedSeats.indexOf(num) == -1) {
+        selectSeats.innerHTML += `<div class="form-check form-check-inline">
             <input onchange="updateSeatCount()" class="form-check-input" type="checkbox" id="inlineCheckbox${num}" value="option${num}">
             <label class="form-check-label" for="inlineCheckbox${num}">${num}</label>
           </div>`;
-    } else {
-      selectSeats.innerHTML += `<div class="form-check form-check-inline">
+      } else {
+        selectSeats.innerHTML += `<div class="form-check form-check-inline">
             <input onchange="updateSeatCount()" class="form-check-input " type="checkbox" id="inlineCheckbox${num}" value="option${num}" disabled>
             <label class="form-check-label text-danger" for="inlineCheckbox${num}">${num}</label>
           </div>`;
+      }
     }
+  } else {
+    selectSeats.innerHTML = `<p class="text-primary">Sorry😢. All the seats for the particular show are booked.</p>`;
   }
 }
 
 function updateSeatCount() {
-  all_seats = document.querySelectorAll("#selectSeats input[type=checkbox]");
+  all_seats = document.querySelectorAll("input[type=checkbox]");
   countOfPerson = 0;
   seatsToBeBooked = [];
   let i = 0;
