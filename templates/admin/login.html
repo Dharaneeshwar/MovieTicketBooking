@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharani Cinemas</title>
+    <!-- custom bootstrap -->
+    <link rel="stylesheet" id="theme" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+</head>
+
+<body class="mb-5 bg-background">
+    <nav class="container navbar navbar-expand-lg fixed-top navbar-light bg-background ">
+        <a class="navbar-brand" href="../../">
+            <b class="text-primary" style="font-size: 20px;">
+                Dharani Cinemas</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="container" style="margin-top: 55px;">
+        <section class="mt-5 pt-5">
+            <div class="container d-none d-md-block">
+                <div class="row  justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="my-auto" style="padding-left: 100px; padding-right: 100px;">
+                            <p class="text-center mb-5" style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">Admin - Log in</p>
+                            <form action="#!" class="mb-2" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="email" style="font-weight:bold;">Email</label>
+                                    <input type="texts" name="email" id="email" class="form-control"
+                                        placeholder="abc@email.com" required="required">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" style="font-weight:bold;">Password</label>
+                                    <input type="password" name="Password" id="password" class="form-control"
+                                        placeholder="" required="required">
+                                </div>
+                                <input name="login" id="login" class="btn btn-block btn-primary" type="submit"
+                                    value="Login">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container m-0 d-block d-md-none">
+                <div class="row text-center align-items-center">
+                    <div class="text-text col-11 mx-auto">
+                        <div class="">
+                            <h2 class="" style="font-size: 3rem; font-family: 'Patua One', cursive;">Daily Dose <br
+                                    style="height: 1px;"> <span style="font-size: 2rem;">of code.</span></h2>
+                            <p class="mt-4" style="font-size: 1.2rem;">
+                                If you want to give your A-game in competitive programming, then <b>AceCode</b> is the
+                                right place.
+                            </p>
+                            <!-- <button class="btn btn-primary btn-lg px-5 mt-3 rounded-pill" style="visibility:hidden">Sign
+                                Up</button> -->
+                        </div>
+                    </div>
+                    <div class="col-11 mx-auto" style="margin-top: 70px;">
+                        <div class="my-auto" style="">
+                            <p class="text-primary" style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">Log
+                                in</p>
+                            <form action="#!" class="mb-2">
+                                <div class="form-group">
+                                    <label for="email" style="font-weight:bold;">Email</label>
+                                    <input type="text" name="email" id="email" class="form-control"
+                                        placeholder="email@example.com">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" style="font-weight:bold;">Password</label>
+                                    <input type="password" name="password" id="password1" class="form-control"
+                                        placeholder="enter your passsword">
+                                </div>
+                                <input name="login" id="login1" class="btn btn-block btn-primary" type="button"
+                                    value="Login">
+                            </form>
+                            <p class="mt-4">Don't have an account? <a href="toregister" class="text-reset">Register
+                                    here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- all js -->
+
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <!-- full jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+
+</html>

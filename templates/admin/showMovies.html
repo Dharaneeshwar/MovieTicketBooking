@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dharani Cinemas</title>
+    <style>
+      .tiny-btn {
+        border-radius: 5px;
+        padding: 6px;
+      }
+      .sticky {
+        position: fixed;
+        width: 40%;
+      }
+
+      .a-center {
+        margin-top: 5vh;
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .r-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .r-scroll {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+    <!-- custom bootstrap -->
+    <link
+      rel="stylesheet"
+      id="theme"
+      href="{% static '/css/bootstrap.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav
+      id="userNavbar"
+      class="navbar navbar-expand-lg fixed-top navbar-dark bg-secondary"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" style="font-family: 'Patua One', cursive"
+          >Dharani Cinemas</a
+        >
+        <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a id="movies" class="nav-link active"
+              ><i class="fas fa-film mr-1"></i>Movies<span class="sr-only"
+                >(current)</span
+              ></a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="../shows" id="shows" class="nav-link"
+              ><i class="fas fa-desktop mr-1"></i>Shows<span class="sr-only"
+                >(current)</span
+              ></a
+            >
+          </li>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <button
+            onclick="logout()"
+            id="logoutButton"
+            class="btn btn-outline-light my-2 my-sm-0"
+          >
+            <i class="fas fa-sign-out-alt pr-1"></i>Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="d-none d-md-block col-0 col-md-5 order-lg-1">
+          <div class="p-5 m-3">
+            <h2 style="font-family: 'Patua One', cursive">Movies</h2>
+            <img class="img-fluid mt-4" src="../../static/svg/add.svg" alt="" />
+            <p id="addMedButton" class="text-center mt-5">
+              <button onclick="goTo('add')" class="btn btn-secondary">
+                <i class="fas fa-cart-plus pr-1"></i> Add a Movie
+              </button>
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-md-7 order-lg-2">
+          <div class="pt-5">
+            <div class="table-responsive r-scroll">
+              <table
+                id="adminDashboard"
+                class="text-center table"
+              >
+                <tr class="thead">
+                  <th>Movie Name</th>
+                  <th>Banner</th>
+                  <th>Ticket Price</th>
+                  <th>Options</th>
+                </tr>
+                {% for movie in movies  %}
+                <tr>
+                  <td class="align-middle">{{movie.movie_name}}</td>
+                  <td>
+                    <img src="../../static/media/{{movie.image}}" height="100px" alt="" />
+                  </td><td class="align-middle">₹ {{movie.ticket_price}}</td>
+                  <td class="align-middle">
+                    <p class="d-flex justify-content-center text-light pt-3">
+                      <a onclick="editProduct('{{movie.id}}')"
+                        ><i
+                          class="fas fa-pencil-alt mr-2 bg-warning tiny-btn"
+                        ></i
+                      ></a>
+                      <a onclick="deleteProduct('{{movie.id}}')"
+                        ><i class="fas fa-trash-alt bg-danger tiny-btn"></i
+                      ></a>
+                    </p>
+                  </td>
+                </tr>
+                {% endfor %}
+                <!-- EXTRA -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        function goTo(path) {
+            window.location.href = path;
+        }
+        function editProduct(id) {
+            window.location.href = `edit/${id}`;
+        }
+    </script>
+  </body>
+</html>
