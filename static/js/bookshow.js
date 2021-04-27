@@ -28,8 +28,8 @@ function renderSeats() {
           </div>`;
     } else {
       selectSeats.innerHTML += `<div class="form-check form-check-inline">
-            <input onchange="updateSeatCount()" class="form-check-input" type="checkbox" id="inlineCheckbox${num}" value="option${num}" disabled>
-            <label class="form-check-label" for="inlineCheckbox${num}">${num}</label>
+            <input onchange="updateSeatCount()" class="form-check-input " type="checkbox" id="inlineCheckbox${num}" value="option${num}" disabled>
+            <label class="form-check-label text-danger" for="inlineCheckbox${num}">${num}</label>
           </div>`;
     }
   }

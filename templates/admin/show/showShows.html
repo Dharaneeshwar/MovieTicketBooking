@@ -71,14 +71,14 @@
         >
         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a id="movies" class="nav-link active"
+            <a href="../movies" id="movies" class="nav-link"
               ><i class="fas fa-film mr-1"></i>Movies<span class="sr-only"
                 >(current)</span
               ></a
             >
           </li>
           <li class="nav-item">
-            <a href="../shows" id="shows" class="nav-link"
+            <a  id="shows" class="nav-link active"
               ><i class="fas fa-desktop mr-1"></i>Shows<span class="sr-only"
                 >(current)</span
               ></a
@@ -100,11 +100,11 @@
       <div class="row">
         <div class="d-none d-md-block col-0 col-md-5 order-lg-1">
           <div class="p-5 m-3">
-            <h2 style="font-family: 'Patua One', cursive">Movies</h2>
+            <h2 style="font-family: 'Patua One', cursive">Shows</h2>
             <img class="img-fluid mt-4" src="../../static/svg/add.svg" alt="" />
             <p id="addMedButton" class="text-center mt-5">
               <button onclick="goTo('add')" class="btn btn-secondary">
-                <i class="fas fa-cart-plus pr-1"></i> Add a Movie
+                <i class="fas fa-cart-plus pr-1"></i> Add a Show
               </button>
             </p>
           </div>
@@ -118,24 +118,25 @@
               >
                 <tr class="thead">
                   <th>Movie Name</th>
-                  <th>Banner</th>
-                  <th>Ticket Price</th>
+                  <th>Screen</th>
+                  <th>Date</th>
+                  <th>Timing</th>
                   <th>Options</th>
                 </tr>
-                {% for movie in movies  %}
+                {% for show in shows  %}
                 <tr>
-                  <td class="align-middle">{{movie.movie_name}}</td>
-                  <td>
-                    <img src="../../static/media/{{movie.image}}" height="100px" alt="" />
-                  </td><td class="align-middle">₹ {{movie.ticket_price}}</td>
+                  <td class="align-middle">{{show.movie.movie_name}}</td>
+                  <td class="align-middle">{{show.screen}}</td>
+                  <td class="align-middle">{{show.date}}</td>
+                  <td class="align-middle">{{show.timing}}</td>
                   <td class="align-middle">
                     <p class="d-flex justify-content-center text-light pt-3">
-                      <a onclick="editProduct('{{movie.id}}')"
+                      <a onclick="editProduct('{{show.id}}')"
                         ><i
                           class="fas fa-pencil-alt mr-2 bg-warning tiny-btn"
                         ></i
                       ></a>
-                      <a onclick="deleteProduct('{{movie.id}}','{{movie.movie_name}}')"
+                      <a onclick="deleteProduct('{{show.id}}','{{show.movie_name}}')"
                         ><i class="fas fa-trash-alt bg-danger tiny-btn"></i
                       ></a>
                     </p>
