@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .models import Movie, Show
 from datetime import datetime, timedelta
+from booking.models import Booking
 # Create your views here.
 
 
@@ -9,8 +10,6 @@ def home(request):
     user = request.user
     if user.is_anonymous:
         return redirect('accounts/login/')
-    # time_threshold = timedelta(days = 3) + datetime.now()
-    # shows = Show.objects.all()
     shows = Show.objects.filter(date__range = [datetime.today(),datetime.today()+timedelta(2)]).order_by('date');
     all_show_info = []
     for show in shows:
@@ -27,3 +26,20 @@ def home(request):
 
 def success(request):
     return render(request,'booking/success.html')
+
+def mybooking(request):
+    user = request.user
+    bookingQuery = Booking.objects.filter(user = user.username)
+    booking = []
+    print(bookingQuery)
+    for book in bookingQuery:
+        temp = {}
+        temp['booking'] = book 
+        temp['movie'] = book.show.movie.movie_name 
+        temp['perHead'] = book.ticket_price/book.noOfPerson
+        booking.append(temp)
+    print(booking)
+    context = {
+        'bookings':booking
+    }
+    return render(request,'home/booking_history.html',context)

@@ -1,0 +1,121 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      id="theme"
+      href="{% static '/css/bootstrap.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Dharani Cinemas</title>
+</head>
+
+<body>
+    <nav
+      id="userNavbar"
+      class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a
+          class="navbar-brand"
+          href="../"
+          style="font-family: 'Patua One', cursive"
+          >Dharani Cinemas</a
+        >
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <button
+            onclick="logout()"
+            id="logoutButton"
+            class="btn btn-outline-light my-2 my-sm-0"
+          >
+            <i class="fas fa-sign-out-alt pr-1"></i>Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container" id="medOrderBody">
+        <h2 class="mt-5 pt-5"  style="font-family: 'Patua One', cursive;">My Bookings</h2>    
+        <div class="col-md-11 mt-4">
+        <div class="table-responsive r-scroll">
+        <table class="table">
+          <thead>
+            <tr class="my-head text-light" style="background-color:#b31e6f">
+              <th style="text-align:center">Movie Name</th>
+              <th style="text-align:center">Date</th>
+              <th style="text-align:center">Timing</th>
+              <th style="text-align:center">Screen</th>
+              <th style="text-align:center">No of Tickets</th>
+              <th style="text-align:center">Price per Head</th>
+              <th style="text-align:center">Total Amount</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            {% for booking in bookings%}
+            <tr class="my-row">
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.movie}}</td>
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.booking.show.date}}</td>
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.booking.show.timing}}</td>
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.booking.show.screen}}</td>
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.booking.noOfPerson}}</td>
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.perHead}}</td>
+              <td style="text-align:center; align-items: center; vertical-align:middle;">{{booking.booking.ticket_price}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+        </div>
+      </div>
+      </div>
+
+
+
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function logout() {
+        window.location = "../accounts/logout/";
+      }
+    </script>
+</body>
+
+</html>
