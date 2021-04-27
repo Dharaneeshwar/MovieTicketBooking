@@ -57,3 +57,8 @@ def editMovie(request,id):
     else:
         form = MovieForm(instance = movie)     
     return render(request,'admin/editMovie.html',{'form':form.as_p()})
+
+def deleteMovie(request,id):
+    movie = Movie.objects.filter(pk=id)
+    movie.delete()
+    return redirect('../')

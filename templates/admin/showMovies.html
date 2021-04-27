@@ -135,7 +135,7 @@
                           class="fas fa-pencil-alt mr-2 bg-warning tiny-btn"
                         ></i
                       ></a>
-                      <a onclick="deleteProduct('{{movie.id}}')"
+                      <a onclick="deleteProduct('{{movie.id}}','{{movie.movie_name}}')"
                         ><i class="fas fa-trash-alt bg-danger tiny-btn"></i
                       ></a>
                     </p>
@@ -155,6 +155,12 @@
         }
         function editProduct(id) {
             window.location.href = `edit/${id}`;
+        }
+        function deleteProduct(id,movie) {
+          choice = confirm("Do you want to delete "+movie);
+          if (choice){
+            window.location.href = `delete/${id}`;;
+          }
         }
     </script>
   </body>
