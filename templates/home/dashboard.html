@@ -83,7 +83,7 @@
           class="text-center mt-5 pt-5 text-primary"
           style="font-family: 'Patua One', cursive"
         >
-          Movies/ Shows
+          Available Shows
         </h1>
         <div class="d-flex justify-content-center">
           <!-- Search -->
@@ -95,12 +95,34 @@
             />
           </div>
         </div>
-
-        <div
-          id="product_show"
+        <div class="container col-10">
+        <div class="list-group">
+          {% for show in shows %}
+          <a onclick="goToShow('{{show.id}}','{{show.show.screen}}')" class="click list-group-item list-group-item-action flex-column align-items-start">
+            <div class="row">
+            <div class="col-8">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{show.movie.movie_name}}</h5>
+            </div>
+            <p class="mb-1">{{show.movie.description}}</p>
+            <b class="text-danger">(Screen: {{show.show.screen}})</b>
+            <div class="my-2 d-flex justify-content-between">
+              <div class="text-primary"><b>{{show.show.date}}</b></div>
+              <div class="text-info"><b>{{show.show.timing}}</b></div>
+            </div>
+          </div>
+          <div class="col-4 d-flex justify-content-center">
+            <img src="static/media/{{show.movie.image}}" class="" width="100px" alt="">
+          </div>
+        </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+        <!-- <div
+          id="movie_show"
           class="container mt-3 d-flex flex-wrap justify-content-around mb-5"
         >
-          <!-- add for -->
           {% for show in shows %}
           <div
             onclick="goToShow('{{show.id}}','{{show.show.screen}}')"
@@ -128,7 +150,7 @@
               </p>
             </div>
           </div>
-          {% endfor %}
+          {% endfor %} -->
         </div>
       </div>
 
